@@ -220,8 +220,33 @@ function checkAnswer(selected) {
     if (isCorrect) {
         handleCorrectAnswer();
     } else {
-        endGame();
+        handleWrongAnswer(selected);
     }
+}
+
+function handleWrongAnswer(selected) {
+    // Подсвечиваем ответы
+    const buttons = document.querySelectorAll('#options-container button');
+    buttons.forEach(btn => {
+        if (btn.textContent === selected) {
+            btn.classList.add('wrong-answer');
+        }
+        if (btn.textContent === currentCharacter.name) {
+            btn.classList.add('correct-answer');
+        }
+        btn.disabled = true;
+    });
+
+    // Показываем оригинальное изображение
+    document.getElementById('character-image').style.filter = 'none';
+    
+    // Отключаем возможность пропуска
+    allowSkip = false;
+    
+    // Показываем окно проигрыша через 1.5 секунды
+    setTimeout(() => {
+        showEndScreen();
+    }, 800);
 }
 
 function handleCorrectAnswer() {
@@ -264,14 +289,56 @@ function timeOut() {
     endGame();
 }
 
-function endGame() {
+
+
+
+function showEndScreen() {
     playSound(gameConfig.sounds.wrong);
-    switchScreen('end');
+    
+    // Создаем оверлей для экрана завершения
+    const endScreen = document.getElementById('end-screen');
+    endScreen.style.position = 'fixed';
+    endScreen.style.top = '0';
+    endScreen.style.left = '0';
+    endScreen.style.width = '100%';
+    endScreen.style.height = '100%';
+    endScreen.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+    endScreen.style.display = 'flex';
+    endScreen.style.flexDirection = 'column';
+    endScreen.style.justifyContent = 'center';
+    endScreen.style.alignItems = 'center';
+    endScreen.style.zIndex = '1000';
+    
+    // Центрируем содержимое
+    const endContent = endScreen.querySelector('.end-content');
+    endContent.style.backgroundColor = '#EEE';
+    endContent.style.padding = '30px';
+    endContent.style.borderRadius = '15px';
+    endContent.style.textAlign = 'center';
+    endContent.style.maxWidth = '500px';
+    endContent.style.width = '90%';
+    
     document.getElementById('final-score').textContent = `Ваш счёт: ${score}`;
+    endScreen.classList.remove('hidden');
 }
+
+
 
 function resetGame() {
     clearTimers();
+    
+    // Восстанавливаем стандартные стили экрана завершения
+    const endScreen = document.getElementById('end-screen');
+    endScreen.style = '';
+    endScreen.classList.add('hidden');
+    
+    // Убираем подсветку с кнопок
+    const buttons = document.querySelectorAll('#options-container button');
+    buttons.forEach(btn => {
+        btn.classList.remove('correct-answer', 'wrong-answer');
+        btn.disabled = false;
+    });
+    
     switchScreen('start');
 }
 
