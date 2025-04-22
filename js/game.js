@@ -201,12 +201,14 @@ function startTimer() {
     let timeLeft = gameConfig.roundTime;
     updateTimer(timeLeft);
     
-    timer = setInterval(function() {
+    timer = setInterval(() => {
         timeLeft--;
         updateTimer(timeLeft);
         
         if (timeLeft <= 0) {
-            timeOut();
+            clearInterval(timer);
+            timer = null;
+            handleTimeOut(); // Новая функция для обработки тайм-аута
         }
     }, 1000);
 }
@@ -248,7 +250,24 @@ function handleWrongAnswer(selected) {
         showEndScreen();
     }, 800);
 }
+function handleTimeOut() {
+    // Подсвечиваем правильный ответ
+    const buttons = document.querySelectorAll('#options-container button');
+    buttons.forEach(btn => {
+        if (btn.textContent === currentCharacter.name) {
+            btn.classList.add('correct-answer');
+        }
+        btn.disabled = true;
+    });
 
+    // Показываем оригинальное изображение
+    document.getElementById('character-image').style.filter = 'none';
+    
+    // Завершаем игру через 1.5 секунды
+    setTimeout(() => {
+        showEndScreen();
+    }, 800);
+}
 function handleCorrectAnswer() {
     score += 10;
     updateScore();
@@ -290,8 +309,6 @@ function timeOut() {
 }
 
 
-
-
 function showEndScreen() {
     playSound(gameConfig.sounds.wrong);
     
@@ -320,6 +337,7 @@ function showEndScreen() {
     
     document.getElementById('final-score').textContent = `Ваш счёт: ${score}`;
     endScreen.classList.remove('hidden');
+    
 }
 
 
