@@ -83,12 +83,50 @@ button:hover {
     animation: pulse 0.5s ease-in-out;
     box-shadow: 0 0 15px rgba(76, 175, 80, 0.7);
 }
+.wrong-answer {
+    background-color: #f44336 !important;
+    color: white !important;
+    animation: pulse-red 0.5s ease-in-out;
+    box-shadow: 0 0 15px rgba(244, 67, 54, 0.7);
+}
 
-/* Анимация пульсации */
-@keyframes pulse {
+/* Анимации */
+@keyframes pulse-green {
     0% { transform: scale(1); }
     50% { transform: scale(1.05); }
     100% { transform: scale(1); }
+}
+
+@keyframes pulse-red {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* Стили для экрана завершения */
+#end-screen {
+    display: none;
+}
+
+#end-screen .end-content {
+    position: relative;
+    z-index: 1001;
+}
+
+/* Анимация появления */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+#end-screen.show {
+    animation: fadeIn 0.3s ease-out;
+}
+
+/* Контейнер игры */
+#game-container {
+    position: relative;
+    /* остальные стили */
 }
 
 /* Обновите стили кнопок для лучшего контраста */
