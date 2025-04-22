@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Угадай персонажа</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/game.js" defer></script>
+</head>
+<body>
+    <div id="game-container">
+        <!-- Стартовый экран -->
+        <div id="start-screen" class="screen">
+            <h1>Угадай персонажа</h1>
+            <button id="start-button">Начать игру</button>
+        </div>
+        
+        <!-- Игровой экран -->
+        <div id="game-screen" class="screen hidden">
+            <div class="game-header">
+                <div id="timer">Время: 10</div>
+                <div id="score">Очки: 0</div>
+            </div>
+            <img id="character-image" src="" alt="Персонаж">
+            <div id="options-container" class="options-grid"></div>
+        </div>
+        
+        <!-- Экран завершения -->
+        <div id="end-screen" class="screen hidden">
+            <h1>Игра окончена!</h1>
+            <p id="final-score">Ваш счет: 0</p>
+            <button id="restart-button">Играть снова</button>
+        </div>
+    </div>
+    <script>
+        // Временная заглушка вместо Яндекс SDK
+        window.ysdk = {
+            ready: function(callback) { callback(); },
+            features: { LoadingAPI: null },
+            adv: { 
+                showFullscreenAdv: function() { console.log('Реклама (заглушка)'); },
+                showRewardedVideo: function() { return Promise.resolve(); }
+            },
+            sound: {
+                play: function(src) { 
+                    try { new Audio(src).play(); } 
+                    catch(e) { console.error('Ошибка звука:', e); }
+                }
+            }
+        };
+        </script>
+</body>
+</html>
