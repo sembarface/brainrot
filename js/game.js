@@ -131,8 +131,8 @@ const gameConfig = {
         },
         {
             name: "Burbaloni Lulilolli",
-            image: "assets/images/glorbo.jpg",
-            music: "assets/sounds/glorbo.mp3",
+            image: "assets/images/burbal.jpg",
+            music: "assets/sounds/burbal.mp3",
             blur: 10
         }
         
