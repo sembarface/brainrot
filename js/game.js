@@ -3,10 +3,12 @@ const gameConfig = {
     backgroundImage: "assets/images/back.jpg",
     debug: true,
     roundTime: 10, // 10 секунд на раунд
-    musicDuration: 6000, // 5 секунд музыки персонажа
+    musicDuration: 6000, // 6 секунд музыки персонажа
     allOptions: ["Bobrito Bandito", "Tralalero Tralala", "Tung Tung Sahur",
      "Bombardiro Crocodilo", "Lirilì Larilà", "Brr Brr Patapim", "Trippi Troppi",
-      "Boneca Ambalabu", "Chimpanzini Bananini", "Bombombini Gusini"], // Общий массив вариантов
+      "Boneca Ambalabu", "Chimpanzini Bananini", "Bombombini Gusini","Cappuccino Assassino","Frigo Camelo",
+    "Ballerina Cappuccina","Trulimero Trulicina","Girafa Celestre","Fruli Frula","Brri Brri Bicus Dicus Bombicus",
+    "Glorbo Fruttodrillo","Orangutini Ananasini","Svinino Bombondino","Burbaloni Lulilolli"], // Общий массив вариантов
     sounds: {
         correct: "assets/sounds/correct.mp3",
         wrong: "assets/sounds/wrong.mp3"
@@ -72,8 +74,68 @@ const gameConfig = {
             image: "assets/images/liri.jpg",
             music: "assets/sounds/liri.mp3",
             blur: 10
+        },
+        {
+            name: "Cappuccino Assassino",
+            image: "assets/images/cap.jpg",
+            music: "assets/sounds/cap.mp3",
+            blur: 10
+        },
+        {
+            name: "Frigo Camelo",
+            image: "assets/images/frigo.jpg",
+            music: "assets/sounds/frigo.mp3",
+            blur: 10
+        },
+        {
+            name: "Ballerina Cappuccina",
+            image: "assets/images/ballerina.jpg",
+            music: "assets/sounds/ballerina.mp3",
+            blur: 10
+        },
+        {
+            name: "Trulimero Trulicina",
+            image: "assets/images/truli.jpg",
+            music: "assets/sounds/truli.mp3",
+            blur: 10
+        },
+        {
+            name: "Girafa Celestre",
+            image: "assets/images/girafa.jpg",
+            music: "assets/sounds/girafa.mp3",
+            blur: 10
+        },
+        {
+            name: "Fruli Frula",
+            image: "assets/images/fruli.jpg",
+            music: "assets/sounds/fruli.mp3",
+            blur: 10
+        },
+        {
+            name: "Brri Brri Bicus Dicus Bombicus",
+            image: "assets/images/bicus.jpg",
+            music: "assets/sounds/bicus.mp3",
+            blur: 10
+        },
+        {
+            name: "Glorbo Fruttodrillo",
+            image: "assets/images/glorbo.jpg",
+            music: "assets/sounds/glorbo.mp3",
+            blur: 10
+        },
+        {
+            name: "Orangutini Ananasini",
+            image: "assets/images/orang.jpg",
+            music: "assets/sounds/orang.mp3",
+            blur: 10
+        },
+        {
+            name: "Burbaloni Lulilolli",
+            image: "assets/images/glorbo.jpg",
+            music: "assets/sounds/glorbo.mp3",
+            blur: 10
         }
-
+        
     ]
 };
 
